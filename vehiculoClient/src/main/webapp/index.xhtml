@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="jeje">
+        <p:outputLabel value="Desde" for="txtRange"/>
+        <p:inputText id="txtRange" value="#{client.desde}"/>
+        <p:outputLabel value="Cuantos" for="txtCuantos"/>
+        <p:inputText id="txtCuantos" value="#{client.cuantos}"/>
+        <p:commandButton value="Botón" actionListener="#{client.actualizar}">
+            <p:ajax update=":tbl"/>
+        </p:commandButton>
+        </h:form>
+        <h:form id="tbl">
+        <p:dataTable id="tblModel" value="#{client.salida}" var="mo" paginator="true"
+                         rows="3" lazy="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
+                <p:column headerText="ID" >
+                    <p:outputLabel value="#{mo.idVehiculo}"/>
+                </p:column>
+                <p:column headerText="numero de chasis" >
+                    <p:outputLabel value="#{mo.numeroChasis}"/>
+                </p:column>
+                <p:column headerText="numero vin" >
+                    <p:outputLabel value="#{mo.numeroVin}"/>
+                </p:column>
+                <p:column headerText="modelo" >
+                    <p:outputLabel value="#{mo.idModelo.nombre}"/>
+                </p:column>
+                <p:column headerText="numero placa" >
+                    <p:outputLabel value="#{mo.numeroPlaca}"/>
+                </p:column>
+                <p:column headerText="color" >
+                    <p:outputLabel value="#{mo.color}"/>
+                </p:column>
+                <p:column headerText="asientos" >
+                    <p:outputLabel value="#{mo.asientos}"/>
+                </p:column>
+            </p:dataTable>
+            </h:form>
+    </h:body>
+</html>
+
